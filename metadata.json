@@ -1,0 +1,8 @@
+{
+  "name": "EcoCoin Rewards",
+  "description": "A modern web application that rewards users with coins for recycling plastic items. It features separate interfaces for users, shopkeepers, and distributors, along with a map of recycling bins and a catalog of accepted items.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
