@@ -4,6 +4,7 @@ export enum Role {
   USER = 'User',
   SHOPKEEPER = 'Shopkeeper',
   DISTRIBUTOR = 'Distributor',
+  MUNICIPAL = 'Municipal',
 }
 
 export enum AppScreen {
@@ -16,6 +17,12 @@ export enum AppScreen {
   CHATBOT = 'chatbot',
   IMAGE_ANALYSIS = 'image_analysis',
   SHOPKEEPER_ACCOUNTING = 'shopkeeper_accounting',
+  MUNICIPAL = 'municipal',
+  FLEET_MANAGEMENT = 'fleet_management',
+  COMPLAINT_MANAGEMENT = 'complaint_management',
+  ANALYTICS = 'analytics',
+  ROUTE_PLANNING = 'route_planning',
+  MRF_MANAGEMENT = 'mrf_management',
 }
 
 export interface RecyclableItem {
@@ -54,3 +61,29 @@ export interface AppContextType {
 }
 
 export const AppContext = React.createContext<AppContextType | null>(null);
+
+// New Interfaces for Municipal Features
+export interface Vehicle {
+  id: string;
+  name: string;
+  driver: string;
+  status: 'On Route' | 'Idle' | 'Maintenance';
+  fuel: number; // percentage
+  lat: number;
+  lng: number;
+}
+
+export interface Complaint {
+  id: string;
+  user: string;
+  issue: string;
+  status: 'New' | 'In Progress' | 'Resolved';
+  timestamp: string;
+}
+
+export interface MRFItem {
+    id: string;
+    material: string;
+    quantity: number; // in kg
+    lastUpdated: string;
+}

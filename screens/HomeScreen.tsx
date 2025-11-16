@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import RoleSelectionCard from '../components/RoleSelectionCard';
 import { ROLES } from '../constants';
@@ -18,6 +17,9 @@ const HomeScreen: React.FC = () => {
       case Role.DISTRIBUTOR:
         context?.navigate(AppScreen.DISTRIBUTOR);
         break;
+      case Role.MUNICIPAL:
+        context?.navigate(AppScreen.MUNICIPAL);
+        break;
     }
   };
 
@@ -25,6 +27,7 @@ const HomeScreen: React.FC = () => {
     [Role.USER]: 'text-accent-green focus:ring-accent-green',
     [Role.SHOPKEEPER]: 'text-accent-blue focus:ring-accent-blue',
     [Role.DISTRIBUTOR]: 'text-accent-yellow focus:ring-accent-yellow',
+    [Role.MUNICIPAL]: 'text-accent-purple focus:ring-accent-purple',
   };
 
   return (

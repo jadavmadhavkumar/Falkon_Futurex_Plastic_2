@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { AppContext, AppScreen } from './types';
 import HomeScreen from './screens/HomeScreen';
@@ -10,6 +9,12 @@ import MapScreen from './screens/MapScreen';
 import ChatbotScreen from './screens/ChatbotScreen';
 import ImageAnalysisScreen from './screens/ImageAnalysisScreen';
 import ShopkeeperAccountingScreen from './screens/ShopkeeperAccountingScreen';
+import MunicipalScreen from './screens/MunicipalScreen';
+import FleetManagementScreen from './screens/FleetManagementScreen';
+import ComplaintManagementScreen from './screens/ComplaintManagementScreen';
+import AnalyticsScreen from './screens/AnalyticsScreen';
+import RoutePlanningScreen from './screens/RoutePlanningScreen';
+import MRFManagementScreen from './screens/MRFManagementScreen';
 
 const App: React.FC = () => {
   const [currentScreen, setCurrentScreen] = useState<AppScreen>(AppScreen.HOME);
@@ -53,6 +58,18 @@ const App: React.FC = () => {
         return <ImageAnalysisScreen />;
       case AppScreen.SHOPKEEPER_ACCOUNTING:
         return <ShopkeeperAccountingScreen />;
+      case AppScreen.MUNICIPAL:
+        return <MunicipalScreen />;
+      case AppScreen.FLEET_MANAGEMENT:
+        return <FleetManagementScreen />;
+      case AppScreen.COMPLAINT_MANAGEMENT:
+        return <ComplaintManagementScreen />;
+      case AppScreen.ANALYTICS:
+        return <AnalyticsScreen />;
+      case AppScreen.ROUTE_PLANNING:
+        return <RoutePlanningScreen />;
+      case AppScreen.MRF_MANAGEMENT:
+        return <MRFManagementScreen />;
       default:
         return <HomeScreen />;
     }

@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Role, RecyclableItem, BinLocation, Transaction } from './types';
+import { Role, RecyclableItem, BinLocation, Transaction, Vehicle, Complaint, MRFItem } from './types';
 
 export const ROLES = [
   {
@@ -17,6 +16,11 @@ export const ROLES = [
     role: Role.DISTRIBUTOR,
     description: 'Manage products and track returns.',
     icon: <DistributorIcon />,
+  },
+  {
+    role: Role.MUNICIPAL,
+    description: 'Oversee waste management operations.',
+    icon: <MunicipalIcon />,
   },
 ];
 
@@ -47,6 +51,26 @@ export const MOCK_TRANSACTIONS: Transaction[] = [
     { id: 't5', itemName: 'Wine Bottle', coinValue: 20, timestamp: 'Yesterday' },
 ];
 
+export const MOCK_VEHICLES: Vehicle[] = [
+    { id: 'v1', name: 'Truck-01', driver: 'John Doe', status: 'On Route', fuel: 85, lat: 34.0622, lng: -118.2537 },
+    { id: 'v2', name: 'Truck-02', driver: 'Jane Smith', status: 'Idle', fuel: 60, lat: 34.045, lng: -118.235 },
+    { id: 'v3', name: 'Truck-03', driver: 'Mike Ross', status: 'Maintenance', fuel: 15, lat: 34.058, lng: -118.250 },
+    { id: 'v4', name: 'Truck-04', driver: 'Rachel Zane', status: 'On Route', fuel: 95, lat: 34.048, lng: -118.265 },
+];
+
+export const MOCK_COMPLAINTS: Complaint[] = [
+    { id: 'c1', user: 'Alex Ray', issue: 'Missed pickup on Elm St.', status: 'New', timestamp: '2 hours ago' },
+    { id: 'c2', user: 'Beth Ray', issue: 'Bin overflow at City Park.', status: 'In Progress', timestamp: '1 day ago' },
+    { id: 'c3', user: 'Carl Ray', issue: 'Collection truck leaking oil.', status: 'Resolved', timestamp: '3 days ago' },
+];
+
+export const MOCK_MRF_INVENTORY: MRFItem[] = [
+    { id: 'mrf1', material: 'PET Plastic', quantity: 1250, lastUpdated: 'Today, 9:00 AM' },
+    { id: 'mrf2', material: 'HDPE Plastic', quantity: 800, lastUpdated: 'Today, 9:15 AM' },
+    { id: 'mrf3', material: 'Aluminum', quantity: 2100, lastUpdated: 'Yesterday, 4:30 PM' },
+    { id: 'mrf4', material: 'Glass', quantity: 3500, lastUpdated: 'Today, 8:30 AM' },
+];
+
 
 // SVG Icons
 export function UserIcon() {
@@ -71,6 +95,59 @@ export function DistributorIcon() {
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V7a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
     </svg>
   );
+}
+
+export function MunicipalIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m-1 4h1m5-11h1m-1 4h1m-1 4h1" />
+    </svg>
+  );
+}
+
+export function TruckIcon({ className = "h-6 w-6" }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M1-1-1-1" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h8a1 1 0 001-1z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14 9h4l4 4v4h-2" />
+        </svg>
+    );
+}
+
+export function AlertIcon({ className = "h-6 w-6" }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+    );
+}
+
+export function ChartIcon({ className = "h-6 w-6" }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+    );
+}
+
+export function RouteIcon({ className = "h-6 w-6" }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 21s-8-4.5-8-11.5a8 8 0 1116 0c0 7-8 11.5-8 11.5z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 11a2 2 0 100-4 2 2 0 000 4z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.5l3-3 4 4 4-4 3 3" />
+        </svg>
+    );
+}
+export function RecycleIcon({ className = "h-6 w-6" }: { className?: string }) {
+    return (
+        <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636a9 9 0 010 12.728M5.636 5.636a9 9 0 0112.728 0M12 2v4m0 12v4M4.222 4.222l2.828 2.828m10.122 10.122l-2.828-2.828M2 12h4m12 0h4m-2.828-7.778l-2.828 2.828M7.05 16.95l-2.828 2.828" />
+        </svg>
+    );
 }
 
 export function CoinIcon({ className = "h-6 w-6" }: { className?: string }) {
